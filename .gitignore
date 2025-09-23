@@ -1,0 +1,48 @@
+# 常用 .gitignore 設定
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VSCode
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# 編譯產物
+/dist/
+/build/
+/.next/
+/.nuxt/
+/.output/
+
+# 測試快照
+__snapshots__/
+
+# 測試 coverage
+coverage/
+
+# 環境設定
+.env
+.env.*
+
+# 依專案需求忽略
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 忽略 test/output 目錄下所有檔案
+/test/*
+/output/*

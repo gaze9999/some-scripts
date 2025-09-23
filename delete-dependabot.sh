@@ -1,36 +1,40 @@
-@echo off
-setlocal enabledelayedexpansion
+#!/usr/bin/env bash
+set -euo pipefail
 
-echo 搜尋 dependabot/npm_and_yarn 遠端分支
-set list=
-set count=0
+# find all remote dependabot branches and prune them from origin
 
-for /f "tokens=*" %%b in ('git for-each-ref --format="%%(refname:short)" refs/remotes/origin/dependabot') do (
-    set branch=%%b
-    set branch=!branch:origin/=!
-    echo 找到分支: !branch!
-    set list=!list! !branch!
-    set /a count+=1
-)
+echo "搜尋 dependabot/npm_and_yarn 遠端分支"
+remote_branches=()
+while IFS= read -r remote; do
+  [[ -z "$remote" ]] && continue
+  remote_branches+=("$remote")
+done < <(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/dependabot' || true)
 
-if %count%==0 (
-    echo 沒有找到符合的分支
-    goto :end
-)
+if [[ ${#remote_branches[@]} -eq 0 ]]; then
+  echo "沒有找到符合的分支"
+  exit 0
+fi
 
-echo.
-echo 總共找到 %count% 個分支
-pause
+branches=()
+for remote in "${remote_branches[@]}"; do
+  branch=${remote#origin/}
+  echo "找到分支: $branch"
+  branches+=("$branch")
+done
 
-echo 開始刪除遠端分支
-for %%b in (%list%) do (
-    git push origin --delete %%b
-)
+echo
+printf '總共找到 %s 個分支\n' "${#branches[@]}"
+read -r -p "按 Enter 開始刪除，或 Ctrl+C 取消..." _
 
-echo.
-echo 清理本地追蹤
+echo "開始刪除遠端分支"
+for branch in "${branches[@]}"; do
+  git push origin --delete "$branch"
+
+done
+
+echo
+# prune any stale tracking refs now that remote branches are gone
+echo "清理本地追蹤"
 git fetch origin --prune
 
-:end
-echo 完成
-pause
+echo "完成"
