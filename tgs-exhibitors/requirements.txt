@@ -1,0 +1,10 @@
+# TGS 2025 爬蟲工具依賴
+
+# 必要依賴
+pandas>=2.0.0          # 資料處理和 CSV 操作
+requests>=2.31.0       # HTTP 請求
+beautifulsoup4>=4.12.0 # HTML 解析
+
+# 可選依賴
+matplotlib>=3.8.0      # 資料視覺化
+openpyxl>=3.1.0        # Excel 支援
