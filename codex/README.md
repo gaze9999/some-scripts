@@ -1,22 +1,36 @@
 # 清理雲端無法刪除的任務
 
-##
+## 執行 PowerShell Script
 
-- `get-codex-cloud-task-ids.ps1`: 取得清單
+Execution Policy 阻擋 `.ps1` 時:
 
-- `delete-codex-cloud-tasks-workaround.js`: 刪除用
+```powershell
+powershell -ExecutionPolicy Bypass -File .\get-codex-cloud-task-ids.ps1
+```
 
-## 
+目前環境已允許執行 Script 時:
 
-```powershell -ExecutionPolicy Bypass -File .\get-codex-cloud-task-ids.ps1```
+```powershell
+.\get-codex-cloud-task-ids.ps1
+```
 
-`.\get-codex-cloud-task-ids.ps1`
+先使用 Dry Run:
 
-```js const MODE = 'dry-run'; ```
+```js
+const MODE = 'dry-run';
+```
 
-```js const MODE = 'delete'; ```
+確認後改為:
 
-```powershell codex cloud list```
+```js
+const MODE = 'delete';
+```
+
+最後確認剩餘 Cloud tasks:
+
+```powershell
+codex cloud list
+```
 
 ## 步驟
 
