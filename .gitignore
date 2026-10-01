@@ -46,3 +46,6 @@ coverage/
 # 忽略 test/output 目錄下所有檔案
 /test/*
 /output/*
+
+# Local project agent instructions
+/AGENTS.md
