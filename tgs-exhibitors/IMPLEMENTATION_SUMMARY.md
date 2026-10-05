@@ -11,7 +11,7 @@
 
 ## 🎯 實施目標
 
-根據用戶要求："將這三份導入作為python爬蟲範例的資料檔" - 已完成建立完整的 Python 爬蟲工具套件，用於處理 TGS 2025 展覽商家資料。
+依使用者要求: "將這三份導入作為python爬蟲範例的資料檔" - 已完成建立完整的 Python 爬蟲工具套件, 用於處理 TGS 2025 展覽商家資料
 
 ---
 
@@ -25,15 +25,15 @@
 - **主要方法**:
   - `load_exhibitors()` - 載入 CSV 資料
   - `analyze()` - 執行統計分析
-  - `download_images()` - 並發下載參展商圖片
-  - `generate_report()` - 生成統計報告
+  - `download_images()` - 並行下載參展商圖片
+  - `generate_report()` - 產生統計報告
   - `export_json()` - 匯出 JSON 格式
   - `export_statistics_csv()` - 匯出統計表格
 - **特性**:
   - 完整的日誌記錄
   - 錯誤處理
-  - 並發下載支援 (ThreadPoolExecutor)
-  - 自動檔名生成
+  - 並行下載支援 (ThreadPoolExecutor)
+  - 自動產生檔名
 
 #### ✅ analyzer.py (4.8 KB)
 - **功能**: 進階資料分析工具
@@ -73,21 +73,21 @@
 ...
 ```
 
-### 3. 文檔文件 (5 個)
+### 3. 文件 (5 個)
 
 #### ✅ README.md (6.9 KB)
 - 專案介紹
 - 資料欄位說明
-- 5 個實用代碼範例
+- 5 個實用程式碼範例
 - 進階應用示例
 - 法律聲明
 
 #### ✅ GUIDE.md (8.8 KB)
 - 完整使用指南
-- 安裝和設置步驟
+- 安裝與設定步驟
 - 核心工具詳解
 - 命令列參考
-- 5 個詳細代碼範例
+- 5 個詳細程式碼範例
 - 故障排查部分
 
 #### ✅ PROJECT_STRUCTURE.md (新增)
@@ -110,7 +110,7 @@
 - 技術規格
 - 驗證結果
 
-### 4. 配置文件 (2 個)
+### 4. 設定檔 (2 個)
 
 #### ✅ requirements.txt
 ```
@@ -122,7 +122,7 @@ openpyxl>=3.1.0
 ```
 
 #### ✅ .gitignore
-- Python 緩存檔案
+- Python 快取檔案
 - 輸出目錄
 - 環境變數檔案
 - 系統檔案規則
@@ -133,7 +133,7 @@ openpyxl>=3.1.0
 
 ### 程式語言和工具
 - **Python**: 3.8+
-- **依賴庫**: pandas, requests, beautifulsoup4
+- **相依套件**: pandas, requests, beautifulsoup4
 - **標準庫**: csv, json, logging, pathlib, dataclasses, threading, concurrent.futures
 
 ### 架構
@@ -221,7 +221,7 @@ python3 scraper.py --action analyze
 ✓ pandas 模組正常  
 ✓ requests 模組正常  
 ✓ beautifulsoup4 模組正常  
-✓ 所有依賴已安裝  
+✓ 所有相依套件已安裝\
 
 ---
 
@@ -297,25 +297,25 @@ tgs-exhibitors/
     └── tgs_data.json               # 範例 JSON 輸出
 ```
 
-**總計文件**: 10 個 (含文件夾)  
-**總計代碼行數**: ~500 行  
-**總計文檔字數**: ~15,000 字
+**總計文件**: 10 個 (含資料夾)\
+**總計程式碼行數**: ~500 行\
+**總計文件字數**: ~15,000 字
 
 ---
 
 ## 🚀 快速啟動指南
 
-### 第 1 步：安裝依賴 (1 分鐘)
+### 第 1 步: 安裝相依套件 (1 分鐘)
 ```bash
 pip3 install -r requirements.txt
 ```
 
-### 第 2 步：執行工具 (10 秒)
+### 第 2 步: 執行工具 (10 秒)
 ```bash
 python3 quickstart.py
 ```
 
-### 第 3 步：查看結果 (立即)
+### 第 3 步: 查看結果 (立即)
 ```bash
 cat output/tgs_report.json
 ```
@@ -341,15 +341,15 @@ cat output/tgs_report.json
 - ✓ CSV (表格化)
 - ✓ 控制台輸出 (即時)
 
-### 4. 並發優化
-- ✓ ThreadPoolExecutor 並發下載
-- ✓ 可配置 worker 數量
+### 4. 並行最佳化
+- ✓ ThreadPoolExecutor 並行下載
+- ✓ 可設定 worker 數量
 - ✓ 自動重試機制
 
-### 5. 詳細的文檔
+### 5. 詳細的文件
 - ✓ 快速開始指南
-- ✓ 完整 API 文檔
-- ✓ 30+ 代碼範例
+- ✓ 完整 API 文件
+- ✓ 30+ 程式碼範例
 - ✓ 故障排查指南
 
 ---
@@ -362,7 +362,7 @@ cp tgs_exhibitors.csv ~/works/some-scripts/vue-practice/public/data/
 ```
 
 ### 方式 2: 模組化集成
-在 Vue Practice 中建立新模組：
+在 Vue Practice 中建立新模組:
 ```typescript
 modules/exhibitors/
 ├── types/
@@ -391,12 +391,12 @@ modules/exhibitors/
 
 ## 🛠️ 維護和擴展
 
-### 添加新功能
+### 新增功能
 
 1. **新的分析工具**
-   - 在 analyzer.py 中添加新方法
+   - 在 analyzer.py 中新增方法
    - 遵循現有命名約定
-   - 添加相應文檔
+   - 新增對應文件
 
 2. **新的匯出格式**
    - 在 scraper.py 中実現 export_* 方法
@@ -404,7 +404,7 @@ modules/exhibitors/
 
 3. **爬蟲擴展**
    - 建立 web_scraper.py
-   - 實現即時爬取功能
+   - 實作即時爬取功能
    - 集成 Selenium/Playwright
 
 ### 常見擴展方案
@@ -426,18 +426,18 @@ def export_excel(self, output_file='output/tgs_data.xlsx'):
 - [x] 分析工具 (analyzer.py)
 - [x] 快速啟動 (quickstart.py)
 - [x] 資料檔案 (CSV)
-- [x] 文檔 (3 個)
+- [x] 文件 (3 個)
 - [x] 快速參考卡
-- [x] 依賴列表
-- [x] Git 設置
+- [x] 相依套件列表
+- [x] Git 設定
 
 ### 驗證完成✅
 - [x] Python 環境驗證
-- [x] 依賴安裝驗證
+- [x] 相依套件安裝驗證
 - [x] CSV 載入測試
 - [x] 統計分析測試
 - [x] 資料完整性檢查
-- [x] 文檔準確性檢查
+- [x] 文件準確性檢查
 
 ### 功能完成✅
 - [x] CSV 讀取
@@ -448,13 +448,13 @@ def export_excel(self, output_file='output/tgs_data.xlsx'):
 - [x] JSON 匯出
 - [x] CSV 匯出
 - [x] 圖片下載 (支援)
-- [x] 報告生成
+- [x] 報告產生
 
-### 文檔完成✅
+### 文件完成✅
 - [x] 安裝指南
 - [x] 使用手冊
-- [x] API 文檔
-- [x] 代碼範例
+- [x] API 文件
+- [x] 程式碼範例
 - [x] 快速參考
 - [x] 故障排查
 - [x] 專案結構說明
@@ -463,35 +463,35 @@ def export_excel(self, output_file='output/tgs_data.xlsx'):
 
 ## 🎓 教學價值
 
-此工具可用於演示以下概念：
+此工具可用於演示以下概念:
 
-1. **數據處理** - pandas 基礎
+1. **資料處理** - pandas 基礎
 2. **Web 爬蟲** - requests + BeautifulSoup
 3. **API 設計** - 物件導向設計
 4. **錯誤處理** - try/except/finally
-5. **並發編程** - ThreadPoolExecutor
+5. **並行程式設計** - ThreadPoolExecutor
 6. **資料驗證** - dataclasses
 7. **日誌記錄** - logging 模組
-8. **算法設計** - 搜尋、篩選、統計
+8. **演算法設計** - 搜尋, 篩選, 統計
 
 ---
 
 ## 📞 支援資源
 
-### 文檔
+### 文件
 - README.md - 基本介紹和例子
 - GUIDE.md - 完整使用指南
 - PROJECT_STRUCTURE.md - 深入解說
 - QUICKREF.txt - 快速參考
 
 ### 範例
-- 30+ 完整代碼範例
+- 30+ 完整程式碼範例
 - 5 個進階使用場景
-- Excel、JSON、CSV 匯出範例
+- Excel, JSON, CSV 匯出範例
 
 ### 外部資源
-- Pandas 官方文檔: https://pandas.pydata.org/
-- Requests 官方文檔: https://requests.readthedocs.io/
+- Pandas 官方文件: https://pandas.pydata.org/
+- Requests 官方文件: https://requests.readthedocs.io/
 - TGS 官方網站: https://tgs.cesa.or.jp/
 
 ---
@@ -502,22 +502,22 @@ def export_excel(self, output_file='output/tgs_data.xlsx'):
 - **完成日期**: 2026-02-24
 - **總耗時**: 1 小時
 - **文件數量**: 10 個
-- **代碼行數**: ~500 行
-- **文檔字數**: ~15,000 字
+- **程式碼行數**: ~500 行
+- **文件字數**: ~15,000 字
 - **範例數量**: 30+
 - **資料記錄**: 20+ 筆
 - **支援語言**: Python 3.8+
-- **依賴數量**: 3 個核心 + 2 個可選
+- **相依套件數量**: 3 個核心 + 2 個可選
 
 ---
 
 ## ✨ 最後說明
 
-此專案是一個**完整、生產級別的爬蟲工具套件**，可直接使用或作為參考實現。
+此專案是一個**完整, 生產級別的爬蟲工具套件**, 可直接使用或作為參考實作
 
 **關鍵特點**:
-- 📦 開箱即用 - 無需額外配置
-- 📚 文檔完整 - 30+ 代碼範例
+- 📦 開箱即用 - 無需額外設定
+- 📚 文件完整 - 30+ 程式碼範例
 - 🔧 易於擴展 - 清晰的架構設計
 - 🎓 教學价值 - 演示最佳實踐
 - 🚀 生產就緒 - 錯誤處理完善
@@ -526,8 +526,8 @@ def export_excel(self, output_file='output/tgs_data.xlsx'):
 
 **專案狀態**: ✅ 完成  
 **品質評級**: ⭐⭐⭐⭐⭐ (5/5)  
-**建議用途**: 教學、參考、生產使用
+**建議用途**: 教學, 參考, 生產使用
 
 ---
 
-*此報告由 GitHub Copilot 生成於 2026-02-24*
+*此報告由 GitHub Copilot 產生於 2026-02-24*

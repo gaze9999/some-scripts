@@ -3,10 +3,10 @@
 ## 📋 目錄
 
 1. [快速開始](#快速開始)
-2. [安裝和設置](#安裝和設置)
+2. [安裝與設定](#安裝與設定)
 3. [核心工具](#核心工具)
 4. [命令列參考](#命令列參考)
-5. [範例代碼](#範例代碼)
+5. [程式碼範例](#程式碼範例)
 6. [故障排查](#故障排查)
 
 ---
@@ -26,7 +26,7 @@ python3 quickstart.py
 cat output/tgs_report.json
 ```
 
-### 希望看到完整結果？
+### 希望看到完整結果?
 
 ```bash
 # 分析當前資料
@@ -41,7 +41,7 @@ python3 scraper.py --action export_csv
 
 ---
 
-## 安裝和設置
+## 安裝與設定
 
 ### 系統需求
 
@@ -75,15 +75,15 @@ python3 -c "from bs4 import BeautifulSoup; print('✓ BeautifulSoup OK')"
 
 ### 1. 主爬蟲工具 (scraper.py)
 
-用於基本的資料載入、分析和匯出。
+用於基本的資料載入, 分析和匯出
 
-**主要功能：**
+**主要功能:**
 - 載入 CSV 資料
 - 統計分析
 - 圖片下載
 - JSON/CSV 匯出
 
-**使用方式：**
+**使用方式:**
 
 ```bash
 # 查看所有提供的命令
@@ -93,28 +93,28 @@ python3 scraper.py --help
 python3 scraper.py --action [操作名] --csv [CSV檔案]
 ```
 
-**可用操作：**
+**可用操作:**
 
 | 操作          | 說明               | 範例                                      |
 | ------------- | ------------------ | ----------------------------------------- |
 | `load`        | 載入並驗證資料     | `python3 scraper.py --action load`        |
 | `analyze`     | 執行統計分析       | `python3 scraper.py --action analyze`     |
 | `download`    | 下載所有參展商圖片 | `python3 scraper.py --action download`    |
-| `report`      | 生成 JSON 報告     | `python3 scraper.py --action report`      |
+| `report`      | 產生 JSON 報告     | `python3 scraper.py --action report`      |
 | `export_json` | 匯出為 JSON 格式   | `python3 scraper.py --action export_json` |
 | `export_csv`  | 匯出統計 CSV       | `python3 scraper.py --action export_csv`  |
 
 ### 2. 進階分析工具 (analyzer.py)
 
-用於深度資料分析和搜尋。
+用於深度資料分析和搜尋
 
-**主要功能：**
+**主要功能:**
 - 按國家/展區篩選
 - 搜尋參展商
 - 統計分析
 - 資料匯出
 
-**使用範例：**
+**使用範例:**
 
 ```bash
 python3 -c "
@@ -141,7 +141,7 @@ analyzer.export_to_json('output/tgs_custom.json')
 
 ### 3. 快速開始腳本 (quickstart.py)
 
-一鍵執行所有基本操作。
+一鍵執行所有基本操作
 
 ```bash
 python3 quickstart.py
@@ -211,7 +211,7 @@ cat output/tgs_report.json | python3 -m json.tool
 
 ---
 
-## 範例代碼
+## 程式碼範例
 
 ### 1. 基本資料分析
 
@@ -346,12 +346,12 @@ print("✓ 圖表已儲存")
 
 ### 問題 1: ModuleNotFoundError
 
-**症狀：**
+**症狀:**
 ```
 ModuleNotFoundError: No module named 'pandas'
 ```
 
-**解決方案：**
+**解決方案:**
 ```bash
 # 重新安裝依賴
 pip3 install --upgrade pip
@@ -360,12 +360,12 @@ pip3 install -r requirements.txt --force-reinstall
 
 ### 問題 2: CSV 無法開啟
 
-**症狀：**
+**症狀:**
 ```
 FileNotFoundError: [Errno 2] No such file or directory: 'tgs_exhibitors.csv'
 ```
 
-**解決方案：**
+**解決方案:**
 ```bash
 # 確認檔案存在
 ls -la *.csv
@@ -376,12 +376,12 @@ python3 scraper.py --csv /full/path/to/tgs_exhibitors.csv
 
 ### 問題 3: 圖片下載失敗
 
-**症狀：**
+**症狀:**
 ```
 ✗ 參展商名: HTTPError 403
 ```
 
-**解決方案：**
+**解決方案:**
 ```python
 # 增加重試邏輯
 import time
@@ -400,12 +400,12 @@ response = session.get(url, timeout=15)
 
 ### 問題 4: 編碼錯誤
 
-**症狀：**
+**症狀:**
 ```
 UnicodeDecodeError: 'utf-8' codec can't decode
 ```
 
-**解決方案：**
+**解決方案:**
 ```python
 # 嘗試不同的編碼
 df = pd.read_csv('tgs_exhibitors.csv', encoding='utf-8-sig')
@@ -415,10 +415,10 @@ df = pd.read_csv('tgs_exhibitors.csv', encoding='big5')
 
 ### 慢速連線
 
-**症狀：**
+**症狀:**
 下載圖片時速度很慢
 
-**解決方案：**
+**解決方案:**
 ```bash
 # 增加 worker 數量
 python3 -c "
@@ -433,13 +433,13 @@ scraper.download_images(max_workers=10)  # 預設為 5
 
 ## 貢獻
 
-發現 Bug 或有改進建議？歡迎提交！
+發現 Bug 或有改進建議? 歡迎提交!
 
 ---
 
 ## 授權
 
-此專案資料來自 TGS 官方網站，僅供教學和研究用途。
+此專案資料來自 TGS 官方網站, 僅供教學和研究用途
 
 ---
 
