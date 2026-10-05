@@ -2,7 +2,7 @@
 
 ## 專案說明
 
-此專案提供 **TGS 2025 展覽商家資料**，用於 Python 爬蟲和資料分析範例。
+此專案提供 **TGS 2025 展覽商家資料**, 用於 Python 爬蟲和資料分析範例
 
 ## 資料檔案
 
@@ -252,16 +252,16 @@ for idx, row in df.iterrows():
 
 ## 法律聲明
 
-- 資料來源：[Tokyo Game Show 官方網站](https://tgs.cesa.or.jp/)
+- 資料來源: [Tokyo Game Show 官方網站](https://tgs.cesa.or.jp/)
 - 此份資料僅供教學和研究用途
 - 請尊重參展商的知識產權和隱私
 
 ## 相關資源
 
 - [TGS 官方網站](https://tgs.cesa.or.jp/)
-- [Python pandas 文檔](https://pandas.pydata.org/)
-- [BeautifulSoup 文檔](https://www.crummy.com/software/BeautifulSoup/)
-- [Requests 文檔](https://docs.python-requests.org/)
+- [Python pandas 文件](https://pandas.pydata.org/)
+- [BeautifulSoup 文件](https://www.crummy.com/software/BeautifulSoup/)
+- [Requests 文件](https://docs.python-requests.org/)
 
 ---
 

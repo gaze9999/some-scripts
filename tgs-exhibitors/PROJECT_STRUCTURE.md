@@ -48,15 +48,15 @@ tgs-exhibitors/                    # Tokyo Game Show 展覽商家爬蟲工具
 
 ## 使用流程
 
-### 第 1 步：安裝依賴
+### 第 1 步: 安裝相依套件
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-### 第 2 步：選擇你的操作
+### 第 2 步: 選擇你的操作
 
-#### 快速分析（推薦新手）
+#### 快速分析(推薦新手)
 ```bash
 python3 quickstart.py
 ```
@@ -76,7 +76,7 @@ python3 scraper.py --action download
 python3 analyzer.py
 ```
 
-### 第 3 步：查看結果
+### 第 3 步: 查看結果
 
 ```bash
 # 查看統計報告
@@ -100,7 +100,7 @@ cat output/areas_statistics.csv
 ✓ 按國家統計參展商數量
 ✓ 按展區統計參展商數量
 ✓ 線上展示統計
-✓ 生成統計報告
+✓ 產生統計報告
 
 ### 3. 資料搜尋
 ✓ 關鍵字搜尋
@@ -182,7 +182,7 @@ cp output/tgs_exhibitors.json ~/works/socs2_frontend/public/data/
 
 ### 方法 2: API 端點
 
-在 Vue Practice 中建立新的模組來展示此資料：
+在 Vue Practice 中建立新的模組來展示此資料:
 
 ```typescript
 // modules/exhibitors/types/index.ts
@@ -267,7 +267,7 @@ scraper.load_exhibitors()
 
 ## 許可和使用條款
 
-- 資料來源：Tokyo Game Show 官方
+- 資料來源: Tokyo Game Show 官方
 - 此工具僅供教學和研究使用
 - 請尊重參展商的知識產權和隱私
 
@@ -277,14 +277,14 @@ scraper.load_exhibitors()
 - ✨ 初始版本發佈
 - 🎉 包含 20+ 筆範例資料
 - 📊 完整的分析工具
-- 📝 詳細的文檔說明
+- 📝 詳細的文件說明
 
 ## 相關資源
 
 - [TGS 官方網站](https://tgs.cesa.or.jp/)
-- [Pandas 文檔](https://pandas.pydata.org/docs/)
-- [Requests 文檔](https://requests.readthedocs.io/)
-- [BeautifulSoup 文檔](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Pandas 文件](https://pandas.pydata.org/docs/)
+- [Requests 文件](https://requests.readthedocs.io/)
+- [BeautifulSoup 文件](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 ---
 
