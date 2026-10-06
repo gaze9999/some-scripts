@@ -1,17 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const ts = require('C:/projects/dev/sfap/sfap-web-component/node_modules/typescript');
-
-const root = 'C:/projects/dev/sfap/sfap-web-component/apps/txn/f08/sacrm/src/app/sacrm190';
-const files = [];
-const walk = dir => {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(full);
-    else if (entry.name.endsWith('.ts')) files.push(full);
-  }
-};
-walk(root);
+const { context } = require('./import-runtime.cjs');
+const selected = context();
+if (!selected) return;
+const { root, files, ts } = selected;
 
 const results = [];
 for (const file of files.sort()) {
@@ -38,4 +30,4 @@ for (const file of files.sort()) {
   const unused = imported.filter(item => !used.has(item.name));
   if (unused.length) results.push({ file: path.relative(root, file).replaceAll('\\', '/'), unused });
 }
-process.stdout.write(JSON.stringify({ files: files.length, results }, null, 2));
+process.stdout.write(JSON.stringify({ files: files.length, analysis: 'Lexical identifier heuristic; template and symbol consumers require compiler/reference checks', results }, null, 2));

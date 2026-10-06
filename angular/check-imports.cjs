@@ -1,24 +1,15 @@
 const fs = require('fs');
 const path = require('path');
-const ts = require('C:/projects/dev/sfap/sfap-web-component/node_modules/typescript');
-const prettier = require('C:/projects/dev/sfap/sfap-web-component/node_modules/prettier');
-
-const root = 'C:/projects/dev/sfap/sfap-web-component/apps/txn/f08/sacrm/src/app/sacrm190';
-const files = [];
-const walk = dir => {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(full);
-    else if (entry.name.endsWith('.ts')) files.push(full);
-  }
-};
+const { context } = require('./import-runtime.cjs');
+const selected = context({ prettier: true });
+if (!selected) return;
+const { root, files, ts, prettier } = selected;
 const declarations = (file, source) => {
   const sf = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
   return sf.statements.filter(ts.isImportDeclaration);
 };
 
 (async () => {
-  walk(root);
   const result = {
     files: files.length,
     importFormattingMismatches: [],
@@ -56,4 +47,4 @@ const declarations = (file, source) => {
     }
   }
   process.stdout.write(JSON.stringify(result, null, 2));
-})();
+})().catch(error => { console.error(error.message); process.exitCode = 1; });
