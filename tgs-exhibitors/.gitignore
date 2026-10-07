@@ -1,10 +1,4 @@
-all-env
-output/
-*.pyc
-__pycache__/
-.DS_Store
-.env
-*.log
-venv/
-.venv/
-node_modules/
+# Common environment, cache and log rules are inherited from ../.gitignore
+# Crawler-local environment and generated output; keep source CSV data visible
+/all-env/
+/output/
