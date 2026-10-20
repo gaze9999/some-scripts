@@ -44,3 +44,10 @@ Desktop.ini
 
 # Local project agent instructions
 /AGENTS.md
+
+# Private signing material and generated extension packages
+*.key
+*.p12
+*.pfx
+*.crx
+/build.pem
