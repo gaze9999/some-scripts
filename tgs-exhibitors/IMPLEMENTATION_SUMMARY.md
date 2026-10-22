@@ -3,7 +3,7 @@
 ## 📊 專案概述
 
 **名稱**: Tokyo Game Show (TGS) 2025 展覽商家爬蟲工具  
-**位置**: `/Users/gazelle/works/some-scripts/tgs-exhibitors`  
+**位置**: `tgs-exhibitors/`  
 **建立日期**: 2026-02-24  
 **狀態**: ✅ 完成並驗證
 
