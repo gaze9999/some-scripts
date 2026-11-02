@@ -1,0 +1,4 @@
+
+
+# Publication hooks run through a POSIX shell on every platform
+.githooks/* text eol=lf

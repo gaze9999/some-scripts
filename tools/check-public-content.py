@@ -3,6 +3,7 @@
 
 import argparse
 import html
+import json
 import re
 import subprocess
 import sys
@@ -80,8 +81,28 @@ def content_problems(data):
     return problems
 
 
+def fixture_blobs():
+    name = ".public-content-fixtures.json"
+    if name.encode() not in git("ls-files", "-z").split(b"\x00"):
+        return set()
+    entries = json.loads(git("show", ":" + name))
+    if not isinstance(entries, list):
+        raise ValueError("Fixture exceptions must be a list")
+    allowed = set()
+    for entry in entries:
+        if (not isinstance(entry, dict) or set(entry) != {"blob", "path", "reason"}
+                or not isinstance(entry["blob"], str)
+                or not re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", entry["blob"])
+                or not isinstance(entry["path"], str) or not entry["path"]
+                or not isinstance(entry["reason"], str) or not entry["reason"].strip()):
+            raise ValueError("Invalid exact fixture exception")
+        allowed.add(entry["blob"])
+    return allowed
+
+
 class Checker:
     def __init__(self):
+        self.fixtures = fixture_blobs()
         self.checked = set()
         self.problems = set()
         self.hash_bytes = 32 if git("rev-parse", "--show-object-format").strip() == b"sha256" else 20
@@ -120,6 +141,8 @@ class Checker:
                 position = zero + 1 + self.hash_bytes
         else:
             for problem in content_problems(data):
+                if kind == b"blob" and oid in self.fixtures and problem == "absolute local workspace path":
+                    continue
                 self.problems.add((location, problem))
 
     def index(self):

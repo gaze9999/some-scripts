@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import os
 from pathlib import Path
 import shutil
@@ -174,6 +175,34 @@ class GitBoundaryTests(unittest.TestCase):
         self.assertNotEqual(0, result.returncode)
         self.assertIn(b"absolute local workspace path", result.stderr)
         self.assertEqual("", self.git("ls-remote", "--tags", str(remote)))
+
+    def test_exact_fixture_exception_does_not_allow_changed_content(self):
+        self.write("fixture.txt", workspace().encode())
+        self.git("add", "fixture.txt")
+        blob = self.git("rev-parse", ":fixture.txt")
+        policy = [{"blob": blob, "path": "fixture.txt", "reason": "Synthetic path regression fixture"}]
+        self.write(".public-content-fixtures.json", json.dumps(policy).encode())
+        self.git("add", ".public-content-fixtures.json")
+        self.check("--index")
+        self.git("commit", "-m", "Reviewed synthetic fixture")
+        self.check("--history")
+        self.write("fixture.txt", (workspace() + "/changed").encode())
+        self.git("add", "fixture.txt")
+        self.check("--index", expected=1)
+        self.git("tag", "-a", "unsafe-note", "-m", workspace())
+        self.check("--history", expected=1)
+        self.write("key-fixture.txt", pem().encode())
+        self.git("add", "key-fixture.txt")
+        policy.append({"blob": self.git("rev-parse", ":key-fixture.txt"),
+                       "path": "key-fixture.txt", "reason": "Must never allow private keys"})
+        self.write(".public-content-fixtures.json", json.dumps(policy).encode())
+        self.git("add", ".public-content-fixtures.json")
+        self.check("--index", expected=1)
+
+    def test_invalid_fixture_policy_fails_closed(self):
+        self.write(".public-content-fixtures.json", b'[{"blob": "*"}]')
+        self.git("add", ".public-content-fixtures.json")
+        self.check("--index", expected=2)
 
     def test_shallow_history_fails_closed(self):
         clone = self.root / "shallow"
