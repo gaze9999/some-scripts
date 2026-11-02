@@ -9,7 +9,7 @@ python tools/check-public-content.py --history
 python -m unittest discover -s tests -p test_public_content.py
 ```
 
-`pre-commit` checks staged bytes, including files whose working copy was subsequently changed. `pre-push` checks the complete ancestry and annotations of every outgoing branch or tag. History checks require a full clone and include detached HEAD. CI runs the same history check and regression tests on pushes of minor-version Tags (`vX.Y.0`) or manual dispatch. Branch pushes, pull requests and patch Tags do not start CI.
+`pre-commit` checks staged bytes, including files whose working copy was subsequently changed. `pre-push` checks the complete ancestry and annotations of every outgoing branch or tag. History checks require a full clone and include detached HEAD. CI runs the same history check and regression tests on pushes of major-version Tags (`vX.0.0`) or manual dispatch. Branch pushes, pull requests and patch Tags do not start CI.
 
 The guard rejects PEM private-key markers, standalone RSA/EC/PKCS#8 DER structures, signing-key filenames, CRX packages and absolute Windows personal/workspace roots. It checks binary blobs and common UTF-16/32, JSON, URL and HTML encodings. Diagnostics contain object IDs and categories, never matched content. Public certificates, public keys and generic `PROJECT_PATH` or `C:/path/to/project` examples remain allowed.
 
