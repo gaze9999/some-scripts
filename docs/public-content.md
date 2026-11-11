@@ -28,6 +28,6 @@ python -m unittest discover -s tests -p test_public_content.py
 
 ## 維護來源
 
-檢查器與隔離案例由 [Codex Toolkit](https://github.com/gaze9999/codex-toolkit/blob/main/tools/check-public-content.py) 維護, 各儲存庫保留相同的獨立副本, 不依賴其他 checkout 或網路下載, 更新時比對來源與 hash 並執行既有隔離案例
+檢查器與隔離案例是本儲存庫的獨立副本 ([檢查器](../tools/check-public-content.py)、[案例](../tests/test_public_content.py)), 執行時只使用本儲存庫的內容, 更新時比對來源與 hash 並執行既有隔離案例
 
 檢查器 SHA-256: `7035ffeca4c0eb62d46b8db52447e38bd12b65824a7452854135cd2775e9b5d6`
