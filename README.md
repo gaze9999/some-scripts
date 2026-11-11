@@ -1,6 +1,6 @@
 # Some Scripts
 
-互不相依的個人工具腳本, 各資料夾有自己的語言、執行環境與說明, 沒有共用的套件管理或建置命令
+個人工具腳本, 各資料夾有自己的語言、執行環境與說明, 依各自的說明執行
 
 | 路徑 | 內容 | 說明 |
 | --- | --- | --- |
@@ -13,7 +13,7 @@
 | `tgs-exhibitors/` | TGS 2025 展覽商家資料與 Python 爬蟲、分析範例 | [tgs-exhibitors/README.md](tgs-exhibitors/README.md) |
 | `tools/`、`tests/` | 公開內容檢查器與測試 | [docs/public-content.md](docs/public-content.md) |
 
-部分腳本會清除快取、刪除遠端分支或變更遠端資料, 執行前先閱讀該腳本與對應說明, 有提供 dry run 的先以 dry run 確認
+`scripts/clear_line_cache.sh` 與 `codex/` 的腳本提供 dry run, 先以 dry run 確認要清除或刪除的對象
 
 ## 公開內容檢查
 
